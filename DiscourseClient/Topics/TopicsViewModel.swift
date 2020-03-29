@@ -32,21 +32,31 @@ class TopicsViewModel {
     }
     
     func fetchTopicList() {
+                topicViewModels = []
                 topicsDataManager.fetchAllTopics { result in
             switch result {
             case .success(let response):
+                
                 let responseArray = [response.topicList.topics]
+                
                 for item in responseArray {
                     for topicObject in item {
                         self.topicViewModels.append(TopicCellViewModel(topic: topicObject))
+        
                     }
                 }
-                self.viewDelegate?.topicsFetched()
+                
+//                print("\(responseArray)")
+                DispatchQueue.main.async {[weak self] in
+                    self?.viewDelegate?.topicsFetched()
+                    
+                }
                 break
             case .failure(let error):
                 print(error)
             }
         }
+        
     }
     func viewWasLoaded() {
         /** TODO:
@@ -80,9 +90,12 @@ class TopicsViewModel {
     func plusButtonTapped() {
         coordinatorDelegate?.topicsPlusButtonTapped()
     }
-
+    
+    
     func newTopicWasCreated() {
         // TODO: Seguramente debamos recuperar de nuevo los topics del datamanager, y pintarlos de nuevo
+        
         fetchTopicList()
     }
+    
 }

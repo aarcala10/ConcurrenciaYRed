@@ -16,6 +16,7 @@ class TopicsCoordinator: Coordinator {
     let topicDetailDataManager: TopicDetailDataManager
     let addTopicDataManager: AddTopicDataManager
     var topicsViewModel: TopicsViewModel?
+    
 
     init(presenter: UINavigationController, topicsDataManager: TopicsDataManager,
          topicDetailDataManager: TopicDetailDataManager,
@@ -79,8 +80,22 @@ extension TopicsCoordinator: TopicsCoordinatorDelegate {
     }
 }
 
+
 extension TopicsCoordinator: TopicDetailCoordinatorDelegate {
+    
+    func topicDetailDelButtonTapped() {
+        presenter.popViewController(animated: true)
+        topicsViewModel?.viewWasLoaded()
+        
+
+}
+
+
     func topicDetailBackButtonTapped() {
         presenter.popViewController(animated: true)
+        print("back")
+        
+        
     }
+    
 }

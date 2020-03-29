@@ -12,5 +12,5 @@ import Foundation
 protocol DiscourseClientRemoteDataManager {
     func fetchAllTopics(completion: @escaping (Result<LatestTopicsResponse, Error>) -> ())
     func fetchTopic(id: Int, completion: @escaping (Result<SingleTopicResponse, Error>) -> ())
-    func addTopic(title: String, raw: String, createdAt: String, completion: @escaping (Result<AddNewTopicResponse, Error>) -> ())
+    func addTopic(title: String, raw: String, completion: @escaping (Result<AddNewTopicResponse, Error>) -> ())
 }

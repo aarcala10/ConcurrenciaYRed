@@ -66,9 +66,9 @@ class AddTopicViewController: UIViewController {
 
     @objc fileprivate func submitButtonTapped() {
         guard let text = textField.text, !text.isEmpty else { return }
-        viewModel.submitButtonTapped(title: text)
+        viewModel.submitButtonTapped(title: text,raw: text)
     }
-
+    
     fileprivate func showErrorAddingTopicAlert() {
         let message = NSLocalizedString("Error adding topic\nPlease try again later", comment: "")
         showAlert(message)

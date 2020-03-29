@@ -18,4 +18,5 @@ struct TopicList: Codable {
 struct Topic: Codable {
     let id: Int
     let title: String
+    let closed: Bool
 }

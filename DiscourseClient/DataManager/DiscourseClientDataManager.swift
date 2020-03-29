@@ -35,7 +35,8 @@ extension DiscourseClientDataManager: TopicDetailDataManager {
 }
 
 extension DiscourseClientDataManager: AddTopicDataManager {
-    func addTopic(title: String, raw: String, createdAt: String, completion: @escaping (Result<AddNewTopicResponse, Error>) -> ()) {
-        remoteDataManager.addTopic(title: title, raw: raw, createdAt: createdAt, completion: completion)
+    func addTopic(title: String, raw: String, completion: @escaping (Result<AddNewTopicResponse, Error>) -> ()) {
+        remoteDataManager.addTopic(title: title, raw: raw, completion: completion)
     }
 }
+

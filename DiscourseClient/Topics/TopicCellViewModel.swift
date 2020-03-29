@@ -13,9 +13,12 @@ class TopicCellViewModel {
     let topic: Topic
     var textLabelText: String?
     
+    
+    
     init(topic: Topic) {
         self.topic = topic
         // TODO: Asignar textLabelText, el título del topic
         textLabelText = topic.title
+        
     }
 }

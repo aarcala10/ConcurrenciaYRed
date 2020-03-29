@@ -94,10 +94,12 @@ extension TopicsViewController: UITableViewDelegate {
 }
 
 extension TopicsViewController: TopicsViewDelegate {
-    func topicsFetched() {
+    func topicsFetched(){
         tableView.reloadData()
+        print ("reload")
     }
 
+    
     func errorFetchingTopics() {
         showErrorFetchingTopicsAlert()
     }
