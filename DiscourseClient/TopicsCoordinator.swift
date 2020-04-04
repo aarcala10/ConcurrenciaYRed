@@ -90,7 +90,6 @@ extension TopicsCoordinator: TopicDetailCoordinatorDelegate {
 
 }
 
-
     func topicDetailBackButtonTapped() {
         presenter.popViewController(animated: true)
         print("back")

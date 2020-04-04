@@ -96,7 +96,7 @@ extension TopicsViewController: UITableViewDelegate {
 extension TopicsViewController: TopicsViewDelegate {
     func topicsFetched(){
         tableView.reloadData()
-        print ("reload")
+        print ("Topics list LOADED")
     }
 
     
