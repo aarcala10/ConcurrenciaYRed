@@ -47,3 +47,7 @@ extension DiscourseClientDataManager: CategoriesDataManager {
         remoteDataManager.fetchCategories(completion: completion)
     }
 }
+
+// MARK: USERS
+
+

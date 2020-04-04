@@ -44,6 +44,8 @@
 		62A697A323E89BD600CCEA3E /* LatestTopicsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A697A223E89BD600CCEA3E /* LatestTopicsRequest.swift */; };
 		62A697A623E89C2200CCEA3E /* LatestTopicsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A697A523E89C2200CCEA3E /* LatestTopicsResponse.swift */; };
 		62A697A823E89E6700CCEA3E /* DiscourseClientLocalDataManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A697A723E89E6700CCEA3E /* DiscourseClientLocalDataManagerImpl.swift */; };
+		914B25AE24393DAE004CCE25 /* LatestUsersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B25AD24393DAE004CCE25 /* LatestUsersRequest.swift */; };
+		914B25B12439453D004CCE25 /* LatestUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B25B02439453D004CCE25 /* LatestUsersResponse.swift */; };
 		91A315CE2438C5C000ED86D0 /* LatestCategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A315CD2438C5C000ED86D0 /* LatestCategoriesResponse.swift */; };
 		91A315D02438C66100ED86D0 /* LatestCategoriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A315CF2438C66100ED86D0 /* LatestCategoriesRequest.swift */; };
 		91A315D22438CF3600ED86D0 /* CategoriesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A315D12438CF3600ED86D0 /* CategoriesDataManager.swift */; };
@@ -92,6 +94,8 @@
 		62A697A223E89BD600CCEA3E /* LatestTopicsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestTopicsRequest.swift; sourceTree = "<group>"; };
 		62A697A523E89C2200CCEA3E /* LatestTopicsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestTopicsResponse.swift; sourceTree = "<group>"; };
 		62A697A723E89E6700CCEA3E /* DiscourseClientLocalDataManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscourseClientLocalDataManagerImpl.swift; sourceTree = "<group>"; };
+		914B25AD24393DAE004CCE25 /* LatestUsersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestUsersRequest.swift; sourceTree = "<group>"; };
+		914B25B02439453D004CCE25 /* LatestUsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestUsersResponse.swift; sourceTree = "<group>"; };
 		91A315CD2438C5C000ED86D0 /* LatestCategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestCategoriesResponse.swift; sourceTree = "<group>"; };
 		91A315CF2438C66100ED86D0 /* LatestCategoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestCategoriesRequest.swift; sourceTree = "<group>"; };
 		91A315D12438CF3600ED86D0 /* CategoriesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDataManager.swift; sourceTree = "<group>"; };
@@ -255,10 +259,9 @@
 		627DC5DA23E607D6006D8615 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				62015CC523EF161E00673EBB /* SingleTopicRequest.swift */,
-				62015CD123EF205100673EBB /* CreateTopicRequest.swift */,
-				62A697A223E89BD600CCEA3E /* LatestTopicsRequest.swift */,
-				91A315CF2438C66100ED86D0 /* LatestCategoriesRequest.swift */,
+				914B25A824393CFE004CCE25 /* Topics */,
+				914B25A924393D1E004CCE25 /* Categories */,
+				914B25AC24393D8A004CCE25 /* Users */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -266,12 +269,63 @@
 		62A697A423E89C0300CCEA3E /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				914B25AA24393D44004CCE25 /* Topics */,
+				914B25AB24393D55004CCE25 /* Categories */,
+				914B25AF243944D2004CCE25 /* Users */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		914B25A824393CFE004CCE25 /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				62015CC523EF161E00673EBB /* SingleTopicRequest.swift */,
+				62015CD123EF205100673EBB /* CreateTopicRequest.swift */,
+				62A697A223E89BD600CCEA3E /* LatestTopicsRequest.swift */,
+			);
+			path = Topics;
+			sourceTree = "<group>";
+		};
+		914B25A924393D1E004CCE25 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				91A315CF2438C66100ED86D0 /* LatestCategoriesRequest.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		914B25AA24393D44004CCE25 /* Topics */ = {
+			isa = PBXGroup;
+			children = (
 				62015CC723EF162D00673EBB /* SingleTopicResponse.swift */,
 				62015CD323EF21A900673EBB /* AddNewTopicResponse.swift */,
 				62A697A523E89C2200CCEA3E /* LatestTopicsResponse.swift */,
+			);
+			path = Topics;
+			sourceTree = "<group>";
+		};
+		914B25AB24393D55004CCE25 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
 				91A315CD2438C5C000ED86D0 /* LatestCategoriesResponse.swift */,
 			);
-			path = Responses;
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		914B25AC24393D8A004CCE25 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				914B25AD24393DAE004CCE25 /* LatestUsersRequest.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		914B25AF243944D2004CCE25 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				914B25B02439453D004CCE25 /* LatestUsersResponse.swift */,
+			);
+			path = Users;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +403,7 @@
 				91A315D02438C66100ED86D0 /* LatestCategoriesRequest.swift in Sources */,
 				62A697A323E89BD600CCEA3E /* LatestTopicsRequest.swift in Sources */,
 				627DC5BE23E5F7A0006D8615 /* Coordinator.swift in Sources */,
+				914B25AE24393DAE004CCE25 /* LatestUsersRequest.swift in Sources */,
 				627DC5C323E5FEE4006D8615 /* TopicsViewModel.swift in Sources */,
 				62015CC023EF0F8100673EBB /* TopicDetailViewModel.swift in Sources */,
 				91A315D22438CF3600ED86D0 /* CategoriesDataManager.swift in Sources */,
@@ -375,6 +430,7 @@
 				627DC5C823E60384006D8615 /* TopicsDataManager.swift in Sources */,
 				627DC5C023E5F7B3006D8615 /* AppCoordinator.swift in Sources */,
 				62A697A823E89E6700CCEA3E /* DiscourseClientLocalDataManagerImpl.swift in Sources */,
+				914B25B12439453D004CCE25 /* LatestUsersResponse.swift in Sources */,
 				62015CD623EF21F600673EBB /* AddTopicDataManager.swift in Sources */,
 				627DC5D923E60727006D8615 /* APIRequest.swift in Sources */,
 				62015CD023EF1F6800673EBB /* AddTopicViewController.swift in Sources */,
