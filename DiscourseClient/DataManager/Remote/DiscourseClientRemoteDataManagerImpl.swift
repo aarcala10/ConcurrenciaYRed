@@ -37,5 +37,12 @@ class DiscourseClientRemoteDataManagerImpl: DiscourseClientRemoteDataManager {
             completion(result)
         }
     }
+    
+    func fetchCategories(completion: @escaping (Result<LatestCategoriesResponse, Error>) -> ()) {
+        let request = LatestCategoriesRequest()
+        session.send(request: request) { result in
+            completion(result)
+        }
+    }
         
 }

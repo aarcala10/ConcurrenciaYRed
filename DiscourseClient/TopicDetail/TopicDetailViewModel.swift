@@ -64,10 +64,16 @@ class TopicDetailViewModel {
                         
                     }
                 }
-                self.viewDelegate?.topicDetailFetched()
+                print ("Details topic LOADED")
+                DispatchQueue.main.async {[weak self] in
+                    self?.viewDelegate?.topicDetailFetched()
+                }
+                
                 break
             case .failure(_):
-                self.viewDelegate?.errorFetchingTopicDetail()
+                DispatchQueue.main.async {[weak self] in
+                    self?.viewDelegate?.errorFetchingTopicDetail()
+                }
             }
         }
     }

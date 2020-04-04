@@ -21,7 +21,7 @@ class DiscourseClientDataManager {
         self.remoteDataManager = remoteDataManager
     }
 }
-
+// MARK: TOPICS
 extension DiscourseClientDataManager: TopicsDataManager {
     func fetchAllTopics(completion: @escaping (Result<LatestTopicsResponse, Error>) -> ()) {
         remoteDataManager.fetchAllTopics(completion: completion)
@@ -40,3 +40,10 @@ extension DiscourseClientDataManager: AddTopicDataManager {
     }
 }
 
+// MARK: CATEGORIES
+
+extension DiscourseClientDataManager: CategoriesDataManager {
+    func fetchCategories(completion: @escaping (Result<LatestCategoriesResponse, Error>) -> ()) {
+        remoteDataManager.fetchCategories(completion: completion)
+    }
+}

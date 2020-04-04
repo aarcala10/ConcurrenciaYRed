@@ -46,7 +46,7 @@ class TopicsViewModel {
                     }
                 }
                 
-//                print("\(responseArray)")
+//                print("\(self.topicViewModels)")
                 DispatchQueue.main.async {[weak self] in
                     self?.viewDelegate?.topicsFetched()
                     
