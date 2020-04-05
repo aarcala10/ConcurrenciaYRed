@@ -46,6 +46,13 @@
 		62A697A823E89E6700CCEA3E /* DiscourseClientLocalDataManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A697A723E89E6700CCEA3E /* DiscourseClientLocalDataManagerImpl.swift */; };
 		914B25AE24393DAE004CCE25 /* LatestUsersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B25AD24393DAE004CCE25 /* LatestUsersRequest.swift */; };
 		914B25B12439453D004CCE25 /* LatestUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B25B02439453D004CCE25 /* LatestUsersResponse.swift */; };
+		9168573D243A171C00316521 /* UsersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9168573C243A171C00316521 /* UsersCoordinator.swift */; };
+		91685740243A17A400316521 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9168573F243A17A400316521 /* UsersViewModel.swift */; };
+		91685742243A17BE00316521 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91685741243A17BE00316521 /* UsersViewController.swift */; };
+		91685744243A17CE00316521 /* UsersDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91685743243A17CE00316521 /* UsersDataManager.swift */; };
+		91685746243A17E900316521 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91685745243A17E900316521 /* UserCellViewModel.swift */; };
+		91685749243A1C3D00316521 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91685747243A1C3D00316521 /* UserCell.swift */; };
+		9168574A243A1C3D00316521 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91685748243A1C3D00316521 /* UserCell.xib */; };
 		91A315CE2438C5C000ED86D0 /* LatestCategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A315CD2438C5C000ED86D0 /* LatestCategoriesResponse.swift */; };
 		91A315D02438C66100ED86D0 /* LatestCategoriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A315CF2438C66100ED86D0 /* LatestCategoriesRequest.swift */; };
 		91A315D22438CF3600ED86D0 /* CategoriesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A315D12438CF3600ED86D0 /* CategoriesDataManager.swift */; };
@@ -96,6 +103,13 @@
 		62A697A723E89E6700CCEA3E /* DiscourseClientLocalDataManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscourseClientLocalDataManagerImpl.swift; sourceTree = "<group>"; };
 		914B25AD24393DAE004CCE25 /* LatestUsersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestUsersRequest.swift; sourceTree = "<group>"; };
 		914B25B02439453D004CCE25 /* LatestUsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestUsersResponse.swift; sourceTree = "<group>"; };
+		9168573C243A171C00316521 /* UsersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCoordinator.swift; sourceTree = "<group>"; };
+		9168573F243A17A400316521 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		91685741243A17BE00316521 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		91685743243A17CE00316521 /* UsersDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataManager.swift; sourceTree = "<group>"; };
+		91685745243A17E900316521 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
+		91685747243A1C3D00316521 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		91685748243A1C3D00316521 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		91A315CD2438C5C000ED86D0 /* LatestCategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestCategoriesResponse.swift; sourceTree = "<group>"; };
 		91A315CF2438C66100ED86D0 /* LatestCategoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestCategoriesRequest.swift; sourceTree = "<group>"; };
 		91A315D12438CF3600ED86D0 /* CategoriesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDataManager.swift; sourceTree = "<group>"; };
@@ -182,6 +196,7 @@
 				62015CBE23EF0F6C00673EBB /* TopicDetail */,
 				62015CCC23EF1F4200673EBB /* AddTopic */,
 				62015CD923EF300200673EBB /* Categories */,
+				9168573E243A176F00316521 /* Users */,
 				627DC5BC23E5F775006D8615 /* Coordinator */,
 				627DC5A823E5F580006D8615 /* AppDelegate.swift */,
 				627DC5AA23E5F580006D8615 /* SceneDelegate.swift */,
@@ -192,6 +207,7 @@
 				62015CBC23EF0C6700673EBB /* TopicsCoordinator.swift */,
 				62015CDE23EF30E600673EBB /* CategoriesCoordinator.swift */,
 				62015CD723EF26C900673EBB /* AddTopicCoordinator.swift */,
+				9168573C243A171C00316521 /* UsersCoordinator.swift */,
 			);
 			path = DiscourseClient;
 			sourceTree = "<group>";
@@ -328,6 +344,19 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
+		9168573E243A176F00316521 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				9168573F243A17A400316521 /* UsersViewModel.swift */,
+				91685741243A17BE00316521 /* UsersViewController.swift */,
+				91685743243A17CE00316521 /* UsersDataManager.swift */,
+				91685745243A17E900316521 /* UserCellViewModel.swift */,
+				91685747243A1C3D00316521 /* UserCell.swift */,
+				91685748243A1C3D00316521 /* UserCell.xib */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -390,6 +419,7 @@
 				91A315D82438D7E900ED86D0 /* CategorieCell.xib in Resources */,
 				627DC5B223E5F581006D8615 /* Assets.xcassets in Resources */,
 				62015CBB23EF084C00673EBB /* TopicCell.xib in Resources */,
+				9168574A243A1C3D00316521 /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,9 +439,11 @@
 				91A315D22438CF3600ED86D0 /* CategoriesDataManager.swift in Sources */,
 				62015CC823EF162D00673EBB /* SingleTopicResponse.swift in Sources */,
 				62015CC423EF14FC00673EBB /* TopicDetailDataManager.swift in Sources */,
+				91685744243A17CE00316521 /* UsersDataManager.swift in Sources */,
 				62015CDB23EF301300673EBB /* CategoriesViewModel.swift in Sources */,
 				62015CBD23EF0C6700673EBB /* TopicsCoordinator.swift in Sources */,
 				62A697A623E89C2200CCEA3E /* LatestTopicsResponse.swift in Sources */,
+				91685749243A1C3D00316521 /* UserCell.swift in Sources */,
 				627DC5CF23E604D2006D8615 /* DiscourseClientRemoteDataManager.swift in Sources */,
 				627DC5C523E5FEFD006D8615 /* TopicsViewController.swift in Sources */,
 				627DC5D323E605E5006D8615 /* DiscourseClientRemoteDataManagerImpl.swift in Sources */,
@@ -420,12 +452,16 @@
 				62015CD823EF26C900673EBB /* AddTopicCoordinator.swift in Sources */,
 				62015CD423EF21A900673EBB /* AddNewTopicResponse.swift in Sources */,
 				91A315D42438D6A500ED86D0 /* CategoriesCellViewModel.swift in Sources */,
+				91685740243A17A400316521 /* UsersViewModel.swift in Sources */,
 				62015CC623EF161E00673EBB /* SingleTopicRequest.swift in Sources */,
 				62015CCE23EF1F5200673EBB /* AddTopicViewModel.swift in Sources */,
 				62015CDF23EF30E600673EBB /* CategoriesCoordinator.swift in Sources */,
 				62015CD223EF205100673EBB /* CreateTopicRequest.swift in Sources */,
+				91685742243A17BE00316521 /* UsersViewController.swift in Sources */,
 				62015CC223EF0FA000673EBB /* TopicDetailViewController.swift in Sources */,
+				9168573D243A171C00316521 /* UsersCoordinator.swift in Sources */,
 				91A315CE2438C5C000ED86D0 /* LatestCategoriesResponse.swift in Sources */,
+				91685746243A17E900316521 /* UserCellViewModel.swift in Sources */,
 				62015CDD23EF302900673EBB /* CategoriesViewController.swift in Sources */,
 				627DC5C823E60384006D8615 /* TopicsDataManager.swift in Sources */,
 				627DC5C023E5F7B3006D8615 /* AppCoordinator.swift in Sources */,
