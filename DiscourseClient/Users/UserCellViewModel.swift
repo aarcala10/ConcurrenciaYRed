@@ -8,16 +8,23 @@
 
 import UIKit
 
+protocol CellViewDelegate: class {
+    func userImageFetched()
+
+}
+
 class UserCellViewModel {
     let users: Users
     var textLabelText: String?
     var imageLabel: UIImage?
+    weak var viewdDelegate: CellViewDelegate?
     
     
     
     init(users: Users) {
         self.users = users
         // TODO: Asignar textLabelText, el título del topic
+        
         textLabelText = users.user.username
         
         var imagenUser = users.user.avatarTemplate
@@ -29,11 +36,16 @@ class UserCellViewModel {
             
         }
         
-        DispatchQueue.global(qos:.userInitiated).async { [weak self] in
+        DispatchQueue.global(qos: .background).async { [weak self] in
             let url = "https://mdiscourse.keepcoding.io/\(imagenUser)"
             if let data = try? Data(contentsOf: URL(string: url)!) {
             let image = UIImage(data: data)
-                self?.imageLabel = image
+                DispatchQueue.main.async {
+                    self?.imageLabel = image
+                    self?.viewdDelegate?.userImageFetched()
+
+                }
+                
             }else {
                 self?.imageLabel = UIImage(systemName: "person")
             }

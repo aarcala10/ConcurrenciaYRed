@@ -9,16 +9,27 @@
 import UIKit
 
 class UserCell: UITableViewCell {
+    
+    
     var viewModel: UserCellViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
+            viewModel.viewdDelegate = self
             
             DispatchQueue.main.async { [weak self] in
-                self?.textLabel?.text = viewModel.textLabelText
-                self?.imageView?.image = viewModel.imageLabel
-                self?.setNeedsLayout()
+                self?.textLabel?.text = self?.viewModel?.textLabelText
+                self?.imageView?.image = self?.viewModel?.imageLabel
+                
             }
             
         }
     }
 }
+
+extension UserCell: CellViewDelegate {
+    func userImageFetched() {
+        imageView?.image = viewModel?.imageLabel
+        setNeedsLayout()
+    }
+}
+

@@ -97,4 +97,6 @@ extension UsersViewController: UsersViewDelegate {
     func errorFetchingUsers() {
         showErrorFetchingUsersAlert()
     }
+    
 }
+
