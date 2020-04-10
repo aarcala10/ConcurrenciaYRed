@@ -34,7 +34,7 @@ class TopicsViewModel {
     func fetchTopicList() {
                 topicViewModels = []
         
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             
             self?.topicsDataManager.fetchAllTopics { result in
             switch result {

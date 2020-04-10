@@ -11,15 +11,15 @@ import UIKit
 class UsersCoordinator: Coordinator {
     let presenter: UINavigationController
     let usersDataManager: UsersDataManager
-//    let userDetailDataManager: UserDetailDataManager
+    let userDetailDataManager: UserDetailDataManager
     var usersViewModel: UsersViewModel?
     
 
-    init(presenter: UINavigationController, usersDataManager: UsersDataManager) {
+    init(presenter: UINavigationController, usersDataManager: UsersDataManager, userDetailDataManager: UserDetailDataManager) {
 
         self.presenter = presenter
         self.usersDataManager = usersDataManager
-//        self.userDetailDataManager = userDetailDataManager
+        self.userDetailDataManager = userDetailDataManager
     }
 
     override func start() {
@@ -27,7 +27,7 @@ class UsersCoordinator: Coordinator {
         let usersViewController = UsersViewController(viewModel: usersViewModel)
         usersViewController.title = NSLocalizedString("Users", comment: "")
         usersViewModel.viewDelegate = usersViewController
-//        usersViewModel.coordinatorDelegate = self
+        usersViewModel.coordinatorDelegate = self
         self.usersViewModel = usersViewModel
         presenter.pushViewController(usersViewController, animated: false)
     }
@@ -35,31 +35,32 @@ class UsersCoordinator: Coordinator {
     override func finish() {}
 }
 
-//extension UsersCoordinator: UsersCoordinatorDelegate {
-//    func didSelect(user: Users) {
-//        /** TODO: Lanzar módulo TopicDetail
-//         Para ello tendrás que crear TopicDetailViewModel, TopicDetailViewController.
-//         Asignar "self" como coordinatorDelegate del módulo: Queremos escuchar eventos que requieren navegación desde ese módulo.
-//         Asignar el VC al viewDelegate del VM. De esta forma, el VC se enterará de lo necesario para pintar la UI
-//         Finalmente, lanzar el TopicDetailViewController sobre el presenter.
-//         */
-//        let usersDetailViewModel = UserDetailViewModel(topicID: topic.id, userDetailDataManager: userDetailDataManager)
-//        let usersDetailViewController = UserDetailViewController(viewModel: usersDetailViewModel)
-//        usersDetailViewController.title = NSLocalizedString("User Details", comment: "")
-//        usersDetailViewModel.viewDelegate = topicsDetailViewController
-//        usersDetailViewModel.coordinatorDelegate = self
-//
-//        presenter.pushViewController(usersDetailViewController, animated: true)
-//    }
-//
-//}
+extension UsersCoordinator: UsersCoordinatorDelegate {
+    
+    func didSelect(user: User) {
+        let usersDetailViewModel = UserDetailViewModel(userUsername: user.username, userDetailDataManager: userDetailDataManager)
+        let usersDetailViewController = UserDetailViewController(viewModel: usersDetailViewModel)
+        usersDetailViewController.title = NSLocalizedString("User Details", comment: "")
+        usersDetailViewModel.viewDelegate = usersDetailViewController
+        usersDetailViewModel.coordinatorDelegate = self
+
+        presenter.pushViewController(usersDetailViewController, animated: true)
+    }
+
+}
 
 
-//extension UsersCoordinator: UserDetailCoordinatorDelegate {
-//
-//    func userDetailDelButtonTapped() {
-//        presenter.popViewController(animated: true)
-//        usersViewModel?.viewWasLoaded()
-//    }
-//
-//}
+extension UsersCoordinator: UserDetailCoordinatorDelegate {
+    func userDetailBackButtonTapped() {
+        presenter.popViewController(animated: true)
+        print("BACK")
+    }
+    
+    
+
+    func userDetailEditButtonTapped() {
+//        presenter.ViewController(animated: true)
+        
+    }
+
+}

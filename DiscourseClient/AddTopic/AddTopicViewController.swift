@@ -14,7 +14,7 @@ class AddTopicViewController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .line
-        textField.placeholder = NSLocalizedString("Insert topic title and tap Submit", comment: "")
+        textField.placeholder = NSLocalizedString("Insert topic title (15 characters min.)", comment: "")
 
         return textField
     }()

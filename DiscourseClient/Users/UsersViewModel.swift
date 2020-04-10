@@ -31,8 +31,8 @@ class UsersViewModel {
     
     func fetchUsersList() {
                 userViewModels = []
-        let period = "weekly"
-        let order = "topic_count"
+        let period = "all"
+        let order = ""
         
         DispatchQueue.main.async {[weak self] in
             
@@ -89,6 +89,7 @@ class UsersViewModel {
     func didSelectRow(at indexPath: IndexPath) {
         guard indexPath.row < userViewModels.count else { return }
         coordinatorDelegate?.didSelect(user: userViewModels[indexPath.row].users.user)
+        print("select")
     }
 
 }

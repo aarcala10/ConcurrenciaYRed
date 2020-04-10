@@ -51,10 +51,9 @@ class AppCoordinator: Coordinator {
         
         let usersNavigationController = UINavigationController()
         let usersCoordinator = UsersCoordinator(presenter: usersNavigationController,
-                                                  usersDataManager: dataManager)
-//                                                  userDetailDataManager: dataManager,
-//                                                  addTopicDataManager: dataManager)
-        addChildCoordinator(topicsCoordinator)
+                                                  usersDataManager: dataManager,
+                                                  userDetailDataManager: dataManager)
+        addChildCoordinator(usersCoordinator)
         usersCoordinator.start()
 
         tabBarController.tabBar.tintColor = .black

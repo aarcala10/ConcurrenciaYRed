@@ -49,18 +49,18 @@ class TopicDetailViewModel {
         topicDetailDataManager.fetchTopic (id: topicID) { result in
             switch result {
             case .success(let response):
-                
-                self.labelTopicNameText = "\(response.title)"
-                self.labelTopicIDText = "\(response.id)"
-                self.labelTopicPostsText = "\(response.postsCount)"
+                DispatchQueue.main.async { [weak self] in
+                self?.labelTopicNameText = "\(response.title)"
+                self?.labelTopicIDText = "\(response.id)"
+                self?.labelTopicPostsText = "\(response.postsCount)"
                 
                 if response.details.canDelete == true{
-                    self.modeUserDeleted = response.details.canDelete}
+                    self?.modeUserDeleted = response.details.canDelete}
                     
                 let responseArray = [response.postStream.posts]
                 for item in responseArray {
                     for detail in item {
-                        self.topicDeleted = detail.userDeleted
+                        self?.topicDeleted = detail.userDeleted
                         
                     }
                 }
@@ -68,14 +68,14 @@ class TopicDetailViewModel {
                 DispatchQueue.main.async {[weak self] in
                     self?.viewDelegate?.topicDetailFetched()
                 }
-                
+                }
                 break
             case .failure(_):
                 DispatchQueue.main.async {[weak self] in
                     self?.viewDelegate?.errorFetchingTopicDetail()
                 }
             }
-        }
+            }
     }
     
     
@@ -104,6 +104,7 @@ class TopicDetailViewModel {
 
             let configuration = URLSessionConfiguration.default
             let session = URLSession(configuration: configuration)
+            var responseOK = false
         
             var request = URLRequest(url: updateStatusURL)
             request.httpMethod = "DELETE"
@@ -115,18 +116,24 @@ class TopicDetailViewModel {
                 if let response = response as? HTTPURLResponse {
                     if (response.statusCode == 200)&&(self.topicDeleted == false) {
                         print("Deleting topic...")
+                        responseOK = true
                         DispatchQueue.main.async {[weak self] in
                             
                             self?.coordinatorDelegate?.topicDetailDelButtonTapped()
+                            
                         }
                     }
-                    print("\(response.statusCode)")
+                    if responseOK != true {
+                    DispatchQueue.main.async { [weak self] in
+                        print ("Error deleting topic...")
+                        self?.viewDelegate?.topicDetailErrorDelTopic()
+                    }
+                    }
                     
+
                 }
-                print ("Error deleting topic...")
-                self.viewDelegate?.topicDetailErrorDelTopic()
-                
-                }
+                                
+            }
             
             
             dataTask.resume()

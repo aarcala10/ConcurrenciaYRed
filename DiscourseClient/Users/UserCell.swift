@@ -9,18 +9,12 @@
 import UIKit
 
 class UserCell: UITableViewCell {
-    
-    
     var viewModel: UserCellViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
             viewModel.viewdDelegate = self
-            
-            DispatchQueue.main.async { [weak self] in
-                self?.textLabel?.text = self?.viewModel?.textLabelText
-                self?.imageView?.image = self?.viewModel?.imageLabel
-                
-            }
+            textLabel?.text = viewModel.textLabelText
+            imageView?.image = viewModel.imageLabel
             
         }
     }
