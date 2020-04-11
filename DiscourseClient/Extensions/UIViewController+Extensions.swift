@@ -22,4 +22,12 @@ extension UIViewController {
         alertController.addAction(UIAlertAction(title: alertActionTitle, style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
+    func showAlertOK(_ alertMessage: String,
+                               _ alertTitle: String = NSLocalizedString("Attention", comment: ""),
+                               _ alertActionTitle: String = NSLocalizedString("OK", comment: "")) {
+
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: alertActionTitle, style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
 }

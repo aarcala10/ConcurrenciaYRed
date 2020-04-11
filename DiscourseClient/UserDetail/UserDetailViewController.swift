@@ -36,6 +36,18 @@ class UserDetailViewController: UIViewController {
         return textFieldUserName
     }()
     
+    lazy var updateButton: UIButton = {
+        let updateButton = UIButton()
+        updateButton.translatesAutoresizingMaskIntoConstraints = false
+        updateButton.setTitle(NSLocalizedString("UPDATE", comment: ""), for: .normal)
+        updateButton.backgroundColor = .cyan
+        updateButton.setTitleColor(.white, for: .normal)
+        updateButton.addTarget(self, action: #selector(updateButtonTapped), for: .touchUpInside)
+        
+        return updateButton
+    }()
+
+    
     lazy var userIDStackView: UIStackView = {
         let labelUserIDTitle = UILabel()
         labelUserIDTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +119,8 @@ class UserDetailViewController: UIViewController {
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
-
+        
+        
         view.addSubview(userIDStackView)
         NSLayoutConstraint.activate([
             userIDStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
@@ -132,10 +145,18 @@ class UserDetailViewController: UIViewController {
             userUsernameStackView.topAnchor.constraint(equalTo: userNameStackView.bottomAnchor, constant: 8),
             userUsernameStackView.topAnchor.constraint(equalTo: userNameTextStackView.bottomAnchor, constant: 8)
         ])
+        
+        view.addSubview(updateButton)
+        NSLayoutConstraint.activate([
+            updateButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            updateButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            updateButton.topAnchor.constraint(equalTo: labelUserUsername.bottomAnchor, constant: 16)
+        ])
 
         let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backButtonTapped))
         leftBarButtonItem.tintColor = .black
         navigationItem.leftBarButtonItem = leftBarButtonItem
+        
         
     }
     
@@ -145,15 +166,15 @@ class UserDetailViewController: UIViewController {
         
         
     }
+    @objc fileprivate func updateButtonTapped() {
+        guard let text = textFieldUserName.text, !text.isEmpty else { return }
+        let username = viewModel.labelUserUsernameText
+        viewModel.updateButtonTapped(name: text, username: username ?? "")
+    }
 
     @objc func backButtonTapped() {
         viewModel.backButtonTapped()
     }
-    
-    @objc func editButtonTapped() {
-        viewModel.editButtonTapped()
-    }
-    
     
     fileprivate func showErrorFetchingUserDetailAlert() {
         let alertMessage: String = NSLocalizedString("Error fetching user detail\nPlease try again later", comment: "")
@@ -167,7 +188,9 @@ class UserDetailViewController: UIViewController {
     
     fileprivate func showUserEditedAlert() {
         let alertMessage: String = NSLocalizedString("The name has been edited!!", comment: "")
-        showAlert(alertMessage)
+        let alertTitle: String = NSLocalizedString("Attention", comment: "")
+        
+        showAlert(alertMessage, alertTitle)
     }
     
     
@@ -176,6 +199,10 @@ class UserDetailViewController: UIViewController {
         labelUserName.text = viewModel.labelUserNameText
         labelUserUsername.text = viewModel.labelUserUsernameText
         textFieldUserName.placeholder = viewModel.labelUserNameText
+        userNameTextStackView.isHidden = false
+        userNameTextStackView.isHidden = true
+        updateButton.isHidden = true
+
         
         let showEdit = viewModel.modeUserEdit
             
@@ -183,10 +210,10 @@ class UserDetailViewController: UIViewController {
             if showEdit == true {
                 userNameStackView.isHidden = true
                 userNameTextStackView.isHidden = false
-            }else{
-                userNameTextStackView.isHidden = false
-                userNameTextStackView.isHidden = true
+                updateButton.isHidden = false
+                
             }
+            
         }
         showUserEditButton()
     }

@@ -81,44 +81,28 @@ class UserDetailViewModel{
         
     }
     
-    func editButtonTapped() {guard let updateStatusURL = URL(string: "https://mdiscourse.keepcoding.io/t/\(userUsername).json") else { return }
+    func updateButtonTapped(name: String, username: String){
 
-                let configuration = URLSessionConfiguration.default
-                let session = URLSession(configuration: configuration)
-            
-                var request = URLRequest(url: updateStatusURL)
-                request.httpMethod = "PUT"
-                request.addValue("699667f923e65fac39b632b0d9b2db0d9ee40f9da15480ad5a4bcb3c1b095b7a", forHTTPHeaderField: "Api-Key")
-                request.addValue("aarcala10", forHTTPHeaderField: "Api-Username")
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-                let body: [String: Any] = [
-                    "name": "aarcala11",
-                    
-                ]
-                guard let dataBody = try? JSONSerialization.data(withJSONObject: body) else { return }
-                request.httpBody = dataBody
-            
-                let dataTask = session.dataTask(with: request) { (data, response, error) in
-                    if let response = response as? HTTPURLResponse {
-                        print("\(response.statusCode)User Edited")
-                            DispatchQueue.main.async {[weak self] in
-                                self?.viewDelegate?.userEdited()
-                            }
-                        }
-                        DispatchQueue.main.async { [weak self] in
-                            print ("Error editing user...")
-                            self?.viewDelegate?.userDetailErrorEditUser()
-                    }
-                    
-                    
+        userDetailDataManager.editUserName(name: name, username: username) { result in
+        switch result {
+            case .success(_):
+            DispatchQueue.main.async {[weak self] in
+                self?.viewDelegate?.userEdited()
+                print("Edited")
             }
+            
+            case .failure(_):
+                DispatchQueue.main.async {[weak self] in
+                    self?.viewDelegate?.userDetailErrorEditUser()
+                    print("Error Editing")
+                }
                 
-                
-            dataTask.resume()
-    
+            }
+            
+        }
+                            
     }
-    
-    
-    
+
 }
+                    
+               
