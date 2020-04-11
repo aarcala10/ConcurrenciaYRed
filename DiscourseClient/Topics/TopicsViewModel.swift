@@ -33,7 +33,10 @@ class TopicsViewModel {
     
     func fetchTopicList() {
                 topicViewModels = []
-                topicsDataManager.fetchAllTopics { result in
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            
+            self?.topicsDataManager.fetchAllTopics { result in
             switch result {
             case .success(let response):
                 
@@ -41,7 +44,7 @@ class TopicsViewModel {
                 
                 for item in responseArray {
                     for topicObject in item {
-                        self.topicViewModels.append(TopicCellViewModel(topic: topicObject))
+                        self?.topicViewModels.append(TopicCellViewModel(topic: topicObject))
         
                     }
                 }
@@ -54,6 +57,7 @@ class TopicsViewModel {
                 break
             case .failure(let error):
                 print(error)
+            }
             }
         }
         

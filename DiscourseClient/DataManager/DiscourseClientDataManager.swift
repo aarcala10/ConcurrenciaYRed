@@ -47,3 +47,29 @@ extension DiscourseClientDataManager: CategoriesDataManager {
         remoteDataManager.fetchCategories(completion: completion)
     }
 }
+
+// MARK: USERS
+
+
+extension DiscourseClientDataManager: UsersDataManager {
+    
+    func fetchAllUsers(period: String, order: String, completion: @escaping (Result<LatestUsersResponse, Error>) -> ()) {
+        remoteDataManager.fetchAllUsers(period: period, order: order, completion: completion)
+    }
+}
+
+extension DiscourseClientDataManager: UserDetailDataManager {
+    func fetchUser(username: String, completion: @escaping (Result<SingleUserResponse, Error>) -> ()) {
+        remoteDataManager.fetchUser(username: username, completion: completion)
+    }
+    
+    func editUserName(name: String, username: String, completion: @escaping (Result<UpdateNameUserResponse, Error>) -> ()){
+        remoteDataManager.editUserName(name: name, username: username, completion: completion)
+    }
+}
+
+
+
+
+
+

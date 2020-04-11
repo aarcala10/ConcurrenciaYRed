@@ -166,15 +166,15 @@ extension TopicDetailViewController: TopicDetailViewDelegate {
     }
 
     func errorFetchingTopicDetail() {
-        DispatchQueue.main.async {
-            self.showErrorFetchingTopicDetailAlert()
+        DispatchQueue.main.async { [weak self] in
+            self?.showErrorFetchingTopicDetailAlert()
         }
     }
     
     func topicDetailErrorDelTopic() {
 //        print("no puedes borrar este topic")
-        DispatchQueue.main.async {
-            self.showErrorDeletedTopicDetailAlert()
+        DispatchQueue.main.async { [weak self] in
+            self?.showErrorDeletedTopicDetailAlert()
         }
     }
 }
