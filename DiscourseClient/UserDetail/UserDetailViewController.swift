@@ -13,18 +13,24 @@ class UserDetailViewController: UIViewController {
     lazy var labelUserID: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .orange
+
         return label
     }()
 
     lazy var labelUserUsername: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .orange
+        
         return label
     }()
     
     lazy var labelUserName: UILabel = {
-          let label = UILabel()
-          label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .orange
+
           return label
       }()
     
@@ -124,26 +130,34 @@ class UserDetailViewController: UIViewController {
         view.addSubview(userIDStackView)
         NSLayoutConstraint.activate([
             userIDStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            userIDStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16)
+            userIDStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            labelUserID.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 120),
+
         ])
 
         view.addSubview(userNameStackView)
         NSLayoutConstraint.activate([
             userNameStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            userNameStackView.topAnchor.constraint(equalTo: userIDStackView.bottomAnchor, constant: 8)
+            userNameStackView.topAnchor.constraint(equalTo: userIDStackView.bottomAnchor, constant: 8),
+            labelUserName.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 120),
+
         ])
         
         view.addSubview(userNameTextStackView)
         NSLayoutConstraint.activate([
             userNameTextStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            userNameTextStackView.topAnchor.constraint(equalTo: userIDStackView.bottomAnchor, constant: 8)
+            userNameTextStackView.topAnchor.constraint(equalTo: userIDStackView.bottomAnchor, constant: 8),
+            textFieldUserName.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 120),
+
         ])
         
         view.addSubview(userUsernameStackView)
         NSLayoutConstraint.activate([
             userUsernameStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
             userUsernameStackView.topAnchor.constraint(equalTo: userNameStackView.bottomAnchor, constant: 8),
-            userUsernameStackView.topAnchor.constraint(equalTo: userNameTextStackView.bottomAnchor, constant: 8)
+            userUsernameStackView.topAnchor.constraint(equalTo: userNameTextStackView.bottomAnchor, constant: 8),
+            labelUserUsername.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 120),
+
         ])
         
         view.addSubview(updateButton)
@@ -170,6 +184,7 @@ class UserDetailViewController: UIViewController {
         guard let text = textFieldUserName.text, !text.isEmpty else { return }
         let username = viewModel.labelUserUsernameText
         viewModel.updateButtonTapped(name: text, username: username ?? "")
+        textFieldUserName.resignFirstResponder()
     }
 
     @objc func backButtonTapped() {
@@ -187,8 +202,8 @@ class UserDetailViewController: UIViewController {
     }
     
     fileprivate func showUserEditedAlert() {
-        let alertMessage: String = NSLocalizedString("The name has been edited!!", comment: "")
-        let alertTitle: String = NSLocalizedString("Attention", comment: "")
+        let alertMessage: String = NSLocalizedString("The name has been edited", comment: "")
+        let alertTitle: String = NSLocalizedString("Attention!!", comment: "")
         
         showAlert(alertMessage, alertTitle)
     }

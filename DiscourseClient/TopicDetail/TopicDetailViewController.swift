@@ -14,18 +14,24 @@ class TopicDetailViewController: UIViewController {
     lazy var labelTopicID: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .orange
         return label
     }()
 
     lazy var labelTopicTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .orange
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingMiddle
+        
         return label
     }()
     
     lazy var labelTopicPosts: UILabel = {
-          let label = UILabel()
-          label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .orange
           return label
       }()
     
@@ -91,18 +97,22 @@ class TopicDetailViewController: UIViewController {
         view.addSubview(topicIDStackView)
         NSLayoutConstraint.activate([
             topicIDStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            labelTopicID.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor, constant: 120),
             topicIDStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16)
         ])
 
         view.addSubview(topicNameStackView)
         NSLayoutConstraint.activate([
             topicNameStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            topicNameStackView.topAnchor.constraint(equalTo: topicIDStackView.bottomAnchor, constant: 8)
+            topicNameStackView.topAnchor.constraint(equalTo: topicIDStackView.bottomAnchor, constant: 8),
+            labelTopicTitle.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor, constant: 120),
+            topicNameStackView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -8)
         ])
         
         view.addSubview(topicPostsStackView)
         NSLayoutConstraint.activate([
             topicPostsStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            labelTopicPosts.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor, constant: 120),
             topicPostsStackView.topAnchor.constraint(equalTo: topicNameStackView.bottomAnchor, constant: 8)
         ])
 
