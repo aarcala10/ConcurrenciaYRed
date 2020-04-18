@@ -53,13 +53,23 @@ class UserDetailViewModel{
                 self.modeUserEdit = response.user.canEditName
                     
                 print ("Details user LOADED")
-                
+
+                /*
+                 Este main.async tampoco haría falta puesto que todos los closures que se llaman
+                 desde SessionAPI se llaman dentro de main.async, por tanto lo estaríamos haciendo
+                 dos veces
+                 */
                 DispatchQueue.main.async {[weak self] in
                     self?.viewDelegate?.userDetailFetched()
                 }
                 
                 break
             case .failure(_):
+                /*
+                 Este main.async tampoco haría falta puesto que todos los closures que se llaman
+                 desde SessionAPI se llaman dentro de main.async, por tanto lo estaríamos haciendo
+                 dos veces
+                 */
                 DispatchQueue.main.async {[weak self] in
                     self?.viewDelegate?.errorFetchingUserDetail()
                 }
@@ -86,12 +96,22 @@ class UserDetailViewModel{
         userDetailDataManager.editUserName(name: name, username: username) { result in
         switch result {
             case .success(_):
+                /*
+                 Este main.async tampoco haría falta puesto que todos los closures que se llaman
+                 desde SessionAPI se llaman dentro de main.async, por tanto lo estaríamos haciendo
+                 dos veces
+                 */
             DispatchQueue.main.async {[weak self] in
                 self?.viewDelegate?.userEdited()
                 print("Edited")
             }
             
             case .failure(_):
+                /*
+                 Este main.async tampoco haría falta puesto que todos los closures que se llaman
+                 desde SessionAPI se llaman dentro de main.async, por tanto lo estaríamos haciendo
+                 dos veces
+                 */
                 DispatchQueue.main.async {[weak self] in
                     self?.viewDelegate?.userDetailErrorEditUser()
                     print("Error Editing")

@@ -44,11 +44,21 @@ class AddTopicViewModel {
         dataManager.addTopic(title: title, raw: raw) { result in
             switch result {
                 case .success(_):
+                /*
+                 Este main.async tampoco haría falta puesto que todos los closures que se llaman
+                 desde SessionAPI se llaman dentro de main.async, por tanto lo estaríamos haciendo
+                 dos veces
+                 */
                 DispatchQueue.main.async {[weak self] in
                         self?.coordinatorDelegate?.topicSuccessfullyAdded()
                     }
                 case .failure(_):
                     print("Error adding topic")
+                    /*
+                     Este main.async tampoco haría falta puesto que todos los closures que se llaman
+                     desde SessionAPI se llaman dentro de main.async, por tanto lo estaríamos haciendo
+                     dos veces
+                     */
                     DispatchQueue.main.async { [weak self] in
                         self?.viewDelegate?.errorAddingTopic()
                 }

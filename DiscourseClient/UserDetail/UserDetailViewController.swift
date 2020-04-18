@@ -241,19 +241,21 @@ extension UserDetailViewController: UserDetailViewDelegate {
     }
     
     func errorFetchingUserDetail() {
+        // No hace falta, ya se llama desde la main queue
         DispatchQueue.main.async { [weak self] in
             self?.showErrorFetchingUserDetailAlert()
         }
     }
     
     func userEdited(){
+        // No hace falta, ya se llama desde la main queue
         DispatchQueue.main.async { [weak self] in
             self?.showUserEditedAlert()
         }
     }
     
    func userDetailErrorEditUser() {
-   //        print("no puedes borrar este topic")
+        // No hace falta, ya se llama desde la main queue
         DispatchQueue.main.async {[weak self] in
             self?.showErrorEditUserDetailAlert()
         }
