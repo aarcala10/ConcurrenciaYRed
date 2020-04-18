@@ -41,6 +41,11 @@ class CategoriesViewModel {
                             }
                         }
 //                print("\(self.categorieViewModels)")
+                /*
+                 Este main.async tampoco haría falta puesto que todos los closures que se llaman
+                 desde SessionAPI se llaman dentro de main.async, por tanto lo estaríamos haciendo
+                 dos veces
+                 */
                 DispatchQueue.main.async {[weak self] in
                     self?.viewDelegate?.categoriesFetched()
                 }

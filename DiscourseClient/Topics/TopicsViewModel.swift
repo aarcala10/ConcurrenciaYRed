@@ -33,7 +33,11 @@ class TopicsViewModel {
     
     func fetchTopicList() {
                 topicViewModels = []
-        
+
+        /*
+         NO hace falta la global queue porque el dataTask.reusme() ya hace su trabajo en una
+         cola que on es la main.
+         */
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             
             self?.topicsDataManager.fetchAllTopics { result in
@@ -50,6 +54,11 @@ class TopicsViewModel {
                 }
                 
 //                print("\(self.topicViewModels)")
+                /*
+                 Este main.async tampoco haría falta puesto que todos los closures que se llaman
+                 desde SessionAPI se llaman dentro de main.async, por tanto lo estaríamos haciendo
+                 dos veces
+                 */
                 DispatchQueue.main.async {[weak self] in
                     self?.viewDelegate?.topicsFetched()
                     

@@ -176,13 +176,20 @@ extension TopicDetailViewController: TopicDetailViewDelegate {
     }
 
     func errorFetchingTopicDetail() {
+        /*
+         Este método ya es llamado desntro de un main.async, no hace falta este bloque
+         main.async
+         */
         DispatchQueue.main.async { [weak self] in
             self?.showErrorFetchingTopicDetailAlert()
         }
     }
     
     func topicDetailErrorDelTopic() {
-//        print("no puedes borrar este topic")
+        /*
+         Este método ya es llamado desntro de un main.async, no hace falta este bloque
+         main.async
+         */
         DispatchQueue.main.async { [weak self] in
             self?.showErrorDeletedTopicDetailAlert()
         }

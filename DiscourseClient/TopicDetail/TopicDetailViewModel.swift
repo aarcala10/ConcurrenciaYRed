@@ -49,6 +49,11 @@ class TopicDetailViewModel {
         topicDetailDataManager.fetchTopic (id: topicID) { result in
             switch result {
             case .success(let response):
+
+                /*
+                 No hace falta main.async, puesto que topicDetailDataManager ya nos llama a los
+                 closures dentro de main.async. Así lo estamos haciendo dos veces.
+                 */
                 DispatchQueue.main.async { [weak self] in
                 self?.labelTopicNameText = "\(response.title)"
                 self?.labelTopicIDText = "\(response.id)"
